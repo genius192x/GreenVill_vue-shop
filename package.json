@@ -2,9 +2,12 @@
   "name": "greenvill",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://genius192x.github.io/GreenVill-src/",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+	"deploy": "gh-pages -d dist",
+	"predeploy": "npm run build"
   },
   "dependencies": {
     "core-js": "^3.8.3",

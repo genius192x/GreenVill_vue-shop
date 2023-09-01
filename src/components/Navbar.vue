@@ -69,6 +69,7 @@
 		min-width: 190px;
 		height: auto;
 		margin: 20px;
+		display: none;
 		&__logo{
 			margin-bottom: 250px;
 			cursor: pointer;
@@ -117,6 +118,11 @@
 					}
 				}
 			}
+		}
+	}
+	@media screen and (min-width: 768px){
+		.navbar{
+			display: flex;
 		}
 	}
 </style>
