@@ -40,14 +40,14 @@ export default {
 	html *,
 	html *::before,
 	html *::after {
-		border: 1px solid black;
+		// border: 1px solid black;
 		box-sizing: inherit;
 
 	}
 
 	body{
-		overflow: hidden;
-		background-color: #ffb457;
+		// overflow: hidden;
+		background-color: #edecec;
 		-webkit-tap-highlight-color: transparent;
 		transition: background-color var(--duration);
 
@@ -79,25 +79,26 @@ export default {
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
-		-ms-flex-wrap: nowrap;
 		flex-wrap: nowrap;
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: normal;
-		-ms-flex-direction: column;
-		flex-direction: column;
-		min-height: 100vh;
+		flex-direction: row;
+		min-height: 100dvh;
 		// background: #fff;
 	}
-
-	@media screen and (min-width: 768px){
-		.main{
-			flex: 1 1 auto;
-		}
+	.main{
+		flex: 1 1 auto;
+	}
+	.nav-mobile{
+		display: none;
 	}
 	@media screen and (max-width: 768px){
 		.wrapper{
 			display: flex;
 			flex-direction: column;
+		}
+		.nav-mobile{
+			display: flex;
+			position: fixed;
+			bottom: 0;
 		}
 	}
 	nav {
