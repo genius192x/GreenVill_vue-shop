@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+import { setMenuActive } from '@/components/menu.js'
 const routes = [
   {
     path: '/',
@@ -41,5 +41,9 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
+router.beforeEach((to, from, next) => {
+	setMenuActive()
+	next();
+	setMenuActive()
+});
 export default router
