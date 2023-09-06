@@ -1,23 +1,17 @@
 <template>
-  <div class="wrapper">
-		<v-app>
-			<v-app-bar :elevation="0" rounded>
-			</v-app-bar>
-			<navbar class="nav"></navbar>
-			<div class="main">
-				
-				<router-view v-slot="{ Component, route }">
-					<!-- Use any custom transition and  to `fade` -->
-					<transition name="fade">
-						<component :is="Component" />
-					</transition>
-				</router-view>
+	<div class="wrapper">
+		<navbar class="nav"></navbar>
+		<div class="main">
+			<Header></Header>
+			<router-view v-slot="{ Component, route }">
+				<!-- Use any custom transition and  to `fade` -->
+				<transition name="fade">
+					<component :is="Component" />
+				</transition>
+			</router-view>
 
-			</div>
-			<mobile-nav class="nav-mobile"></mobile-nav>
-		</v-app>
-		
-		
+		</div>
+		<mobile-nav class="nav-mobile"></mobile-nav>
 	</div>
 </template>
 
@@ -25,10 +19,12 @@
 
 import Navbar from '@/components/Navbar'
 import MobileNav from '@/components/MobileNav.vue'
+import Header from './components/Header.vue';
 export default {
 	components:{
 		Navbar,
-		MobileNav
+		MobileNav,
+		Header
 	}
 }
 
