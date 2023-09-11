@@ -20,7 +20,7 @@
 		</svg>
     </router-link>
 
-    <router-link class="menu__item" to="/">
+    <router-link class="menu__item active" to="/">
 		<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 			<path d="M5.5 10V17.5C5.5 18.4428 5.5 18.9142 5.79289 19.2071C6.08579 19.5 6.55719 19.5 7.5 19.5H16.5C17.4428 19.5 17.9142 19.5 18.2071 19.2071C18.5 18.9142 18.5 18.4428 18.5 17.5V10"/>
 			<path d="M20.5 11.5L12.5767 5.90707C12.231 5.66303 11.769 5.66303 11.4233 5.90707L3.5 11.5"/>
@@ -68,8 +68,7 @@ export default {
   mounted() {
 	setTimeout(()=>{
 		setMenuActive()
-	}, 50)
-    
+	}, 100) 
   }
 }
 </script>
