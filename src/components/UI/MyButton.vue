@@ -12,12 +12,11 @@
 
 <style lang="scss" scoped>
 	.btn{
-		border: 1px solid teal;
-		padding: 10px;
+		padding: 12px 35px;
 		margin-right: 15px;
-		border-radius: 4px;
-		background: teal;
-		color: white;
+		border-radius: 25px;
+		background: #0E3459;
+		color: #55E29E;
 		cursor: pointer;
 	}
 </style>

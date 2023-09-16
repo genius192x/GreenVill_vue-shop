@@ -77,7 +77,7 @@ export default {
 	
 
 	.menu{
-
+		z-index: 100;
 		margin: 0;
 		display: flex;
 		/* Works well with 100% width  */

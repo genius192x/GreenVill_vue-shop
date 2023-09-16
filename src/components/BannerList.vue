@@ -1,20 +1,41 @@
 <template>
-	<div  v-if="banners.length > 0"  >
-		<h3>Sales!</h3>
+	<div class="section__banner-list"  v-if="banners.length > 0"  >
+		<!-- <h3 class="section__title">Sales!</h3> -->
 		<swiper
-			:slides-per-view="2"
+			:slides-per-view="1"
 			:space-between="30"
+			:loop="true"
+			:mousewheel="true"
+			:pagination="true"
+			:speed="500"
+			:modules="modules"
+			:breakpoints="{
+				'640': {
+					slidesPerView: 2,
+					spaceBetween: 20,
+				},
+				'768': {
+					slidesPerView: 1,
+					spaceBetween: 40,
+				},
+				'1024': {
+					slidesPerView: 3,
+					spaceBetween: 50,
+				},
+			}"
 			@swiper="onSwiper"
 			@slideChange="onSlideChange" class="banner-list">
-			<swiper-slide  v-for="banner in banners">{{ banner.title }}</swiper-slide>
+			<swiper-slide  v-for="banner in banners"><BannerItem :banner="banner"/></swiper-slide>
 		</swiper>
 	</div>
 </template>
 
 <script>
 import BannerItem from './BannerItem.vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
+import { Swiper, SwiperSlide, } from 'swiper/vue';
+import { Pagination } from 'swiper/modules';
+import 'swiper/scss';
+import 'swiper/css/pagination';
 export default {
 	components: { BannerItem,Swiper, SwiperSlide, },
 	// props: {
@@ -25,14 +46,15 @@ export default {
 	// },
 	setup() {
       const onSwiper = (swiper) => {
-        console.log(swiper);
+        // console.log(swiper);
       };
       const onSlideChange = () => {
-        console.log('slide change');
+        // console.log('slide change');
       };
       return {
         onSwiper,
         onSlideChange,
+		modules: [Pagination],
       };
     },
 	data(){
@@ -40,12 +62,23 @@ export default {
 			banners:[
 				{
 					id:1,
-					title: 'text',
+					badge: 'Top deal!',
+					img: '1.png',
+					title: 'Fresh BANANAS UP TO 10% OFF',
 					link: '#'
 				},
 				{
 					id:2,
-					title: 'text',
+					badge: 'Top deal!',
+					img: '1.png',
+					title: 'Fresh AVOCADO UP TO 15% OFF',
+					link: '#'
+				},
+				{
+					id:3,
+					badge: 'Top deal!',
+					img: '1.png',
+					title: 'Fresh ORANGES UP TO 10% OFF',
 					link: '#'
 				},
 			]
@@ -54,6 +87,43 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+	.section{
+		&__title{
+			font-size: 24px;
+			text-align: left;
+			line-height: 1.5;
+		}
+	}
+	.swiper-pagination-bullet-active{
+		width: 15px;
+		transition: all 0.3s ease 0s;
+		border-radius: 5px;
+	}
+	.swiper-pagination-bullet{
+		transition: all 0.3s ease 0s;
+	}
+	.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+		bottom: -20px;
+		top: var(--swiper-pagination-top, auto);
+		left: 0;
+		width: 100%;
+	}
+	.swiper {
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		overflow: visible;
+		/* overflow: clip; */
+		list-style: none;
+		padding: 0;
+		z-index: 1;
+		display: block;
+	}
+	// .swiper{
+	// 	max-width: 100%;
+	// }
+	// .swiper-slide{
+	// 	max-width: fit-content;
+	// }
 </style>

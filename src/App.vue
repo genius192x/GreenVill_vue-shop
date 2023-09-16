@@ -78,6 +78,7 @@ export default {
 		min-height: 100vh;
 	}
 	.wrapper{
+		overflow-x: hidden;
 		display: -webkit-box;
 		display: -ms-flexbox;
 		display: flex;
@@ -87,7 +88,7 @@ export default {
 		// background: #fff;
 	}
 	.main{
-		flex: 1 1 auto;
+		flex: 0 0 50%;
 	}
 	.nav-mobile{
 		display: none;

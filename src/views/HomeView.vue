@@ -1,9 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to My app"/>
 	<BannerList/>
-
-	
   </div>
 </template>
 
@@ -15,10 +12,15 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default {
 	name: 'HomeView',
 	components:{
-		HelloWorld, BannerList, Swiper, SwiperSlide,
+		HelloWorld, BannerList, 
 	},
 	
 	
 	
 }
 </script>
+<style lang="scss">
+	.home{
+		padding: 0px 10px;
+	}
+</style>

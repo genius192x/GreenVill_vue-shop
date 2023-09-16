@@ -66,7 +66,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		min-width: 190px;
+		min-width: 200px;
 		height: auto;
 		margin: 20px;
 		display: none;
