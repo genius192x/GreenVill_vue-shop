@@ -65,19 +65,19 @@ export default {
 					badge: 'Top deal!',
 					img: '1.png',
 					title: 'Fresh BANANAS UP TO 10% OFF',
-					link: '#'
+					link: 'http://google.com'
 				},
 				{
 					id:2,
 					badge: 'Top deal!',
-					img: '1.png',
+					img: '2.png',
 					title: 'Fresh AVOCADO UP TO 15% OFF',
 					link: '#'
 				},
 				{
 					id:3,
 					badge: 'Top deal!',
-					img: '1.png',
+					img: '3.png',
 					title: 'Fresh ORANGES UP TO 10% OFF',
 					link: '#'
 				},
@@ -96,16 +96,16 @@ export default {
 		}
 	}
 	.swiper-pagination-bullet-active{
-		width: 15px;
+		width: 30px;
 		transition: all 0.3s ease 0s;
 		border-radius: 5px;
+		background: #0E3459;
 	}
 	.swiper-pagination-bullet{
 		transition: all 0.3s ease 0s;
 	}
 	.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
 		bottom: -20px;
-		top: var(--swiper-pagination-top, auto);
 		left: 0;
 		width: 100%;
 	}

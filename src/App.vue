@@ -25,7 +25,11 @@ export default {
 		Navbar,
 		MobileNav,
 		Header
-	}
+	},
+	mounted(){
+		var currentUrl = window.location.pathname;
+		console.log(`Current URL => ${currentUrl}`);
+    }
 }
 
 </script>

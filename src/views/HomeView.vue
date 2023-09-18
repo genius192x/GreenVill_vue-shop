@@ -1,6 +1,7 @@
 <template>
   <div class="home">
 	<BannerList/>
+	
   </div>
 </template>
 
@@ -8,14 +9,15 @@
 // @ is an alias to /src
 import BannerList from '@/components/BannerList.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
-
+import { createRouter, createWebHistory } from 'vue-router'
 export default {
 	name: 'HomeView',
 	components:{
 		HelloWorld, BannerList, 
 	},
+
 	
-	
+
 	
 }
 </script>

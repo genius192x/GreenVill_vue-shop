@@ -5,11 +5,11 @@
 				<small class="banner__badge">{{ banner.badge }}</small>
 				<h3 class="banner__title">{{ banner.title }}</h3>
 				<div class="banner__buttons">
-					<my-button href="{{ banner.link }}">Shop Now</my-button>
+					<my-button @click="$router.push(`/shop/${banner.id}`)" >Shop Now</my-button>
 				</div>
 			</div>
 			<div class="banner__illustration">
-				<img src="@/assets/vegetables/1.png" alt="">
+				<img :src="getImgUrl(banner.img)" alt="img"/>
 			</div>
 		</div>
 		
@@ -25,6 +25,15 @@ export default {
 			type: Object,
 			required: true,
 		}
+	},
+	mounted() {
+		console.log(this.banner.img);
+		
+	},
+	methods:{
+		getImgUrl(pic) {
+			return require('../assets/vegetables/' + pic);
+		},
 	}
 }
 </script>
@@ -34,9 +43,6 @@ export default {
 		background: #F1F4DF;
 		padding: 15px;
 		border-radius: 25px;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
 		&__content{
 			text-align: left;
 			display: flex;
@@ -46,9 +52,20 @@ export default {
 		&__text{
 			flex: 0 0 60%,
 		}
+		&__link{
+			color: #55E29E;
+			font-weight: 500;
+			text-decoration: none;
+		}
 		&__title{
-			font-size: 26px;
+			font-size: 22px;
 			font-weight: 600;	
+		}
+		@media (min-width: 768px){
+			  font-size: 28px;
+		}
+		&__buttons{
+			margin-top: 20px;
 		}
 		&__illustration{
 			max-width: 100%;
