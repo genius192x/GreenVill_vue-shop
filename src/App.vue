@@ -92,7 +92,13 @@ export default {
 		// background: #fff;
 	}
 	.main{
-		flex: 0 0 50%;
+		// flex: 0 0 50%;
+		// max-width: 500px;
+		overflow: hidden;
+		min-height: 100dvh;
+	}
+	.nav{
+		z-index: 10;
 	}
 	.nav-mobile{
 		display: none;

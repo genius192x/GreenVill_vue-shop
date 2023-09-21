@@ -14,13 +14,13 @@
 					slidesPerView: 2,
 					spaceBetween: 20,
 				},
-				'768': {
+				'769': {
 					slidesPerView: 1,
-					spaceBetween: 40,
+					spaceBetween: 20,
 				},
-				'1024': {
-					slidesPerView: 3,
-					spaceBetween: 50,
+				'940': {
+					slidesPerView: 2,
+					spaceBetween: 20,
 				},
 			}"
 			@swiper="onSwiper"
@@ -38,12 +38,12 @@ import 'swiper/scss';
 import 'swiper/css/pagination';
 export default {
 	components: { BannerItem,Swiper, SwiperSlide, },
-	// props: {
-	// 	banners: {
-	// 		type: Array,
-	// 		required: true
-	// 	}
-	// },
+	props: {
+		banners: {
+			type: Array,
+			required: true
+		}
+	},
 	setup() {
       const onSwiper = (swiper) => {
         // console.log(swiper);
@@ -57,33 +57,9 @@ export default {
 		modules: [Pagination],
       };
     },
-	data(){
-		return{
-			banners:[
-				{
-					id:1,
-					badge: 'Top deal!',
-					img: '1.png',
-					title: 'Fresh BANANAS UP TO 10% OFF',
-					link: 'http://google.com'
-				},
-				{
-					id:2,
-					badge: 'Top deal!',
-					img: '2.png',
-					title: 'Fresh AVOCADO UP TO 15% OFF',
-					link: '#'
-				},
-				{
-					id:3,
-					badge: 'Top deal!',
-					img: '3.png',
-					title: 'Fresh ORANGES UP TO 10% OFF',
-					link: '#'
-				},
-			]
-		}
-	},
+	mounted(){
+		
+	}
 }
 </script>
 

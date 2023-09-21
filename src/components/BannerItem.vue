@@ -26,10 +26,6 @@ export default {
 			required: true,
 		}
 	},
-	mounted() {
-		console.log(this.banner.img);
-		
-	},
 	methods:{
 		getImgUrl(pic) {
 			return require('../assets/vegetables/' + pic);

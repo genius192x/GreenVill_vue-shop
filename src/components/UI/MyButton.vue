@@ -18,5 +18,9 @@
 		background: #0E3459;
 		color: #55E29E;
 		cursor: pointer;
+		font-size: 16px;
+		@media (max-width: em(768)){
+			font-size: 14px;
+		}
 	}
 </style>

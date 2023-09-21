@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-	<BannerList/>
+	<BannerList :banners=" banners"/>
 	
   </div>
 </template>
@@ -9,13 +9,21 @@
 // @ is an alias to /src
 import BannerList from '@/components/BannerList.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
 	name: 'HomeView',
 	components:{
 		HelloWorld, BannerList, 
 	},
-
+	
+	computed: {
+	  ...mapState({
+		banners: state => state.banner.banners,
+	  }),
+	},
+	mounted(){
+		console.log(this.banners);
+	},
 	
 
 	
