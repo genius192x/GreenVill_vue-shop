@@ -46,7 +46,7 @@ export default {
 			gap: 15px;
 		}
 		&__text{
-			flex: 0 0 60%,
+			flex: 0 0 50%,
 		}
 		&__link{
 			color: #55E29E;
