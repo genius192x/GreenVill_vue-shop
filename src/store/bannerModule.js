@@ -33,7 +33,9 @@ export const bannerModule = {
 		],
     }),
     getters: {
-
+		getProductById: (state) => (id) => {
+			return state.banners.find(product => product.id === id);
+		}
     },
     mutations: {
 

@@ -6,7 +6,7 @@
 			:space-between="30"
 			:loop="true"
 			:mousewheel="true"
-			:pagination="true"
+			:pagination="{ clickable: true }"
 			:speed="500"
 			:modules="modules"
 			:breakpoints="{
