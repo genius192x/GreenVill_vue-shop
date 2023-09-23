@@ -53,7 +53,7 @@ export default {
 		// 	min-height: 162px;
 		// }
 		&__text{
-			flex: 0 0 50%,
+			flex: 0 0 55%,
 		}
 		&__link{
 			color: #55E29E;

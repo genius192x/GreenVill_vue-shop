@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-	<BannerList :banners=" banners"/>
+	<BannerList :banners="banners"/>
 	
   </div>
 </template>
