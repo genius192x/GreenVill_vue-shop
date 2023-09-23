@@ -22,6 +22,10 @@
 					slidesPerView: 2,
 					spaceBetween: 20,
 				},
+				'1440': {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				},
 			}"
 			@swiper="onSwiper"
 			@slideChange="onSlideChange" class="banner-list">
@@ -70,6 +74,9 @@ export default {
 			text-align: left;
 			line-height: 1.5;
 		}
+	}
+	.swiper-slide{
+		height: 100%;
 	}
 	.swiper-pagination-bullet-active{
 		width: 30px;

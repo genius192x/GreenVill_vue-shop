@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper">
 		<navbar class="nav"></navbar>
-		<div class="main">
+		<div class="inner">
 			<Header></Header>
 			<router-view v-slot="{ Component, route }">
 				<!-- Use any custom transition and  to `fade` -->
@@ -91,8 +91,8 @@ export default {
 		min-height: 100dvh;
 		// background: #fff;
 	}
-	.main{
-		// flex: 0 0 50%;
+	.inner{
+		flex: 1 1 auto;
 		// max-width: 500px;
 		overflow: hidden;
 		min-height: 100dvh;

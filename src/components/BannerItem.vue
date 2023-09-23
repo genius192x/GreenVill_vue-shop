@@ -3,13 +3,13 @@
 		<div class="banner__content">
 			<div class="banner__text">
 				<small class="banner__badge">{{ banner.badge }}</small>
-				<h3 class="banner__title">{{ banner.title }}</h3>
+				<h3 class="banner__title">{{ banner.promoTitle }}</h3>
 				<div class="banner__buttons">
 					<my-button @click="$router.push(`/shop/${banner.id}`)" >Shop Now</my-button>
 				</div>
 			</div>
 			<div class="banner__illustration">
-				<img :src="getImgUrl(banner.img)" alt="img"/>
+				<img class="banner__image" :src="getImgUrl(banner.previewImg)" alt="img"/>
 			</div>
 		</div>
 		
@@ -26,6 +26,9 @@ export default {
 			required: true,
 		}
 	},
+	// mounted(){
+	// 	console.log(banner);
+	// },
 	methods:{
 		getImgUrl(pic) {
 			return require('../assets/vegetables/' + pic);
@@ -36,6 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 	.banner{
+		height: 100%;
 		background: #F1F4DF;
 		padding: 15px;
 		border-radius: 25px;
@@ -43,8 +47,11 @@ export default {
 			text-align: left;
 			display: flex;
 			align-items: center;
-			gap: 15px;
+			justify-content: space-between;
 		}
+		// &__image{
+		// 	min-height: 162px;
+		// }
 		&__text{
 			flex: 0 0 50%,
 		}
