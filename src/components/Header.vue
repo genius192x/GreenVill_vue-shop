@@ -51,7 +51,7 @@ import MyInput from '@/components/UI/MyInput'
 
 <style lang="scss">
 	.header{
-		padding: 20px 15px;
+		padding: 20px 15px 5px 15px;
 		&__avatar{
 			max-height: 50px;
 			max-width: 50px;

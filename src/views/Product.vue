@@ -124,8 +124,8 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 		}
 	}
 	.main-swiper__silde{
-		
 		img{
+			border-radius: 10px;
 			max-width: 100%;
 		}
 	}
@@ -149,9 +149,11 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 			flex: 0 0 50%
 		}
 		&__characteristics{
-			padding: 0px 20px;
+			padding: 20px 10px 20px 30px;
 			list-style-type: disc;
 			text-align: left;
+			background: #fff;
+			border-radius: 10px;
 			@media (max-width: 768px){
 				margin-top: 20px;
 				  
@@ -165,6 +167,9 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 		&__descriprion{
 			line-height: 1.5;
 			margin-top: 20px;
+			padding: 10px 20px;
+			border-radius: 10px;
+			background: #fff;
 		}
 		&__characteristics_item{
 			&:not(:first-child){
