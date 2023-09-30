@@ -1,7 +1,6 @@
-
-export const bannerModule = {
+export const productModule = {
     state: () => ({
-        banners:[
+        products:[
 			{
 				id:1,
 				badge: 'Top deal!',
@@ -168,7 +167,7 @@ export const bannerModule = {
     }),
     getters: {
 		getProductById: (state) => (id) => {
-			return state.banners.find(product => product.id === id);
+			return state.products.find(product => product.id === id);
 		}
     },
     mutations: {

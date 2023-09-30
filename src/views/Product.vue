@@ -78,7 +78,7 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 		},
 		computed: {
 			...mapGetters({
-				getProductById: 'banner/getProductById',
+				getProductById: 'product/getProductById',
 			}),
 			productId() {
 				return +this.$route.params.id;
