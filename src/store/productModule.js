@@ -4,6 +4,8 @@ export const productModule = {
 			{
 				id:1,
 				badge: 'Top deal!',
+				price: 6.85,
+				oldPrice: 7.00,
 				img: '1.png',
 				previewImg: '1.png',
 				promoTitle: 'Fresh BANANAS UP TO 10% OFF',
@@ -58,6 +60,8 @@ export const productModule = {
 			{
 				id:2,
 				badge: 'Top deal!',
+				price: 3.85,
+				oldPrice: 6.85,
 				img: '2.png',
 				previewImg: '2.png',
 				promoTitle: 'Fresh AVOCADO UP TO 15% OFF',
@@ -112,6 +116,8 @@ export const productModule = {
 			{
 				id:3,
 				badge: 'Top deal!',
+				price: 4.85,
+				oldPrice: 6.85,
 				img: '3.png',
 				previewImg: '3.png',
 				promoTitle: 'Fresh ORANGES UP TO 10% OFF',

@@ -10,6 +10,6 @@ export default createStore({
     modules: {
         banner: bannerModule,
 		label: labelModule,
-		product: productModule,
+		products: productModule,
     }
 })

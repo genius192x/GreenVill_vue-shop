@@ -1,5 +1,5 @@
 <template>
-	<a :href="label.href" class="label__wrapper">
+	<a href="#" class="label__wrapper">
 		<div class="label__illustration">
 			<img class="labelr__image" :src="getImgUrl(label.img)" alt="img"/>
 		</div>
@@ -9,9 +9,9 @@
 
 <script>
 	export default {
-		mounted(){
-			console.log(this.label);
-		},
+		// mounted(){
+		// 	console.log(this.label);
+		// },
 		methods:{
 			getImgUrl(pic) {
 				return require('../assets/labels/' + pic);

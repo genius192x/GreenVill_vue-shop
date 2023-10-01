@@ -1,7 +1,14 @@
 <template>
   <div class="home">
-	<BannerList :banners="banners"/>
-	<LabelList :labels="labels"/>
+	<section class="banners">
+		<BannerList :banners="banners"/>
+	</section>
+	<section class="labels">
+		<LabelList :labels="labels"/>
+	</section>
+	<section class="products">
+		<ProductList :products="products"/>
+	</section>
   </div>
 </template>
 
@@ -10,15 +17,17 @@
 import BannerList from '@/components/BannerList.vue'
 import LabelList from '@/components/LabelList.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
+import ProductList from '@/components/ProductList.vue'
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
 	name: 'HomeView',
 	components:{
-		HelloWorld, BannerList, LabelList,
+		HelloWorld, BannerList, LabelList, ProductList
 	},
 	
 	computed: {
 	  ...mapState({
+		products: state => state.products.products,
 		banners: state => state.banner.banners,
 		labels: state => state.label.labels,
 	  }),
@@ -34,5 +43,8 @@ export default {
 <style lang="scss">
 	.home{
 		padding: 0px 10px;
+	}
+	section{
+		padding-block: 10px;
 	}
 </style>
