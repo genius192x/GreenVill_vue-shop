@@ -1,5 +1,5 @@
 <template>
-	<a href="#" class="label__wrapper">
+	<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="label__wrapper">
 		<div class="label__illustration">
 			<img class="labelr__image" :src="getImgUrl(label.img)" alt="img"/>
 		</div>
