@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkgreenvill"]=self["webpackChunkgreenvill"]||[]).push([[37],{2037:function(n,e,r){r.r(e),r.d(e,{default:function(){return o}});var u=r(3396);const s={class:"about"},t=(0,u._)("h1",null,"This is an user page",-1),a=[t];function i(n,e){return(0,u.wg)(),(0,u.iD)("div",s,a)}var l=r(89);const c={},f=(0,l.Z)(c,[["render",i]]);var o=f}}]);
-//# sourceMappingURL=37.a4f65ac7.js.map
+//# sourceMappingURL=37.3fd42fef.js.map

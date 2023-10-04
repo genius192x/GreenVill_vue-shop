@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkgreenvill"]=self["webpackChunkgreenvill"]||[]).push([[781],{8781:function(e,n,r){r.r(n),r.d(n,{default:function(){return t}});var u=r(3396);function i(e,n){return(0,u.wg)(),(0,u.iD)("h1",null,"This is an DelasView page")}var l=r(89);const a={},s=(0,l.Z)(a,[["render",i]]);var t=s}}]);
-//# sourceMappingURL=781.d18e59e4.js.map
+//# sourceMappingURL=781.23b5ff40.js.map
