@@ -16,13 +16,12 @@
 // @ is an alias to /src
 import BannerList from '@/components/BannerList.vue'
 import LabelList from '@/components/LabelList.vue'
-import HelloWorld from '@/components/HelloWorld.vue'
 import ProductList from '@/components/ProductList.vue'
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
 	name: 'HomeView',
 	components:{
-		HelloWorld, BannerList, LabelList, ProductList
+		BannerList, LabelList, ProductList
 	},
 	
 	computed: {

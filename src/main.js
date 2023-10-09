@@ -3,6 +3,8 @@ import App from './App.vue'
 import Mycomponents from './components/UI'
 import router from './router'
 import 'vuetify/styles'
+import SmoothPicker from 'vue-smooth-picker'
+import 'vue-smooth-picker/dist/css/style.css'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
@@ -22,5 +24,6 @@ Mycomponents.forEach(component => {
 app
 .use(router)
 .use(store)
+.use(SmoothPicker)
 .mount('#app')
 
