@@ -1,4 +1,25 @@
 <template>
-	<h1>This is an CartView page</h1>
+	<CartItem :item="cartItem"/>
 </template>
-  
+
+<script>
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import CartItem	from '@/components/CartItem.vue'
+	export default {
+		components:{
+			CartItem,
+		},
+		mounted(){
+			console.log(this.cartItem);
+		},
+		computed: {
+			...mapState({
+				cartItem: state => state.cart.items,
+			}),
+		},
+	}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

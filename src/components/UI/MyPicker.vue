@@ -1,10 +1,10 @@
 <template>
-	<div class="picker">
-		<button @click.stop="showPicker" class="picker__button picker__button_role_show" >add to cart</button>
+	<div @click.stop="$emit('someEvent',currentValue)" class="picker">
+		<button @click="showPicker" class="picker__button picker__button_role_show" >add to cart</button>
 		<div class="picker__wrapper">
-			<button @click.stop="decreaseValue(currentValue)" class="picker__button picker__button_border_reverse">-</button>
-			<VueScrollPicker dragSensitivity:0.5 touchSensitivity:0.5 :options="options" v-model="currentValue"/>
-			<button @click.stop="increaseValue(currentValue)" class="picker__button">+</button>
+			<button @click="decreaseValue(currentValue)" class="picker__button picker__button_border_reverse">-</button>
+			<VueScrollPicker @click="" dragSensitivity:0.5 touchSensitivity:0.5 :options="options" v-model="currentValue"/>
+			<button @click="increaseValue(currentValue)" class="picker__button">+</button>
 		</div>
 	</div>
 	
@@ -14,10 +14,11 @@
 </template>
 <script>
   import { VueScrollPicker } from 'vue-scroll-picker'
-  
+  import { useQuasar } from 'quasar'
   export default {
 	components: {
-	  VueScrollPicker, // export VueScrollPicker is component
+	  VueScrollPicker,
+	  useQuasar // export VueScrollPicker is component
 	},
 	data(){
 		return{
@@ -41,14 +42,14 @@
 			else{
 				let curValue = this.options.indexOf(currentValue);
 				this.currentValue = this.options[curValue - 1]
-				console.log(this.currentValue);
+				// console.log(this.currentValue);
 			}
 			
 		},
 		increaseValue(currentValue){
 			 let curValue = this.options.indexOf(currentValue);
 			 this.currentValue = this.options[curValue + 1]
-			 console.log(this.currentValue);
+			//  console.log(this.currentValue);
 		}
 	},
 	mounted(){
@@ -77,7 +78,7 @@
 	}
 	.picker__button{
 		width: 50px;
-		height: 34px;
+		height: 30px;
 		color: #0E3459;
 		font-size: 20px;
 		border-radius: 0px 5px 5px 0px;

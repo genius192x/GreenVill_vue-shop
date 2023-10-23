@@ -85,10 +85,10 @@ export default {
 		background: #0E3459;
 	}
 	.swiper-pagination-bullet{
-		transition: all 0.3s ease 0s;
+		transition: all 0.5s ease 0s;
 	}
 	.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
-		bottom: -20px;
+		bottom: -25px;
 		left: 0;
 		width: 100%;
 	}

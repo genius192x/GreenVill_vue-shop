@@ -9,8 +9,9 @@
 				<span class="product__cur-price"> ${{ product.price }}</span>
 				<span class="product__old-price">${{ product.oldPrice }}</span>
 			</div>
-			<div class="product__picker" @click.stop>
-				<my-picker @remove=""></my-picker>
+				<!-- <q-btn color="purple" @click="showNotif" label="Show with caption" /> -->
+			<div class="product__picker" @click="showNotif">
+				<my-picker @some-event="test"></my-picker>
 			</div>
 		</div>
 		<!-- <p>currentValue = <strong>{{ currentValue === null ? '(null)' : currentValue }}</strong></p> -->
@@ -20,27 +21,71 @@
 
 <script>
 import MyPicker from '@/components/UI/MyPicker.vue'
+import { useQuasar } from 'quasar'
 // import { VueScrollPicker } from 'vue-scroll-picker'
 // import "vue-scroll-picker/lib/style.css"
 export default {
+	
 	components:{
-		MyPicker
+		MyPicker, useQuasar
+	},
+	setup () {
+		const $q = useQuasar()
+
+		return {
+			showNotif() {
+				console.log('wqwd');
+				$q.notify({
+					message: 'Товар добавлен в корзину' ,
+					color: 'secondary'
+				})
+			}
+		}
 	},	
 	data(){
 		return{
-			options: ["10KG", "20KG", "30KG"],
+			products: [],
+			newProduct: null,
 		}
 	},
+	
 	props: {
 		product:{
 			type: Object,
 			required: true,
 		}
 	},
+	mounted(){
+		if (localStorage.getItem('products')) {
+			try {
+				this.products = JSON.parse(localStorage.getItem('products'));
+			} catch(e) {
+				localStorage.removeItem('products');
+			}
+		}
+	},
 	methods:{
+		test(n){
+			this.newProduct = {
+				title: this.product.title,
+				price: this.product.price,
+				// multiplier: Number(n/1000),
+				weight: n,
+			},
+			this.products.unshift(this.newProduct);
+			console.log(this.newProduct);
+			this.saveProduct();
+			// console.log(n);
+		},
+		saveProduct(){
+			const parsed = JSON.stringify(this.products);
+			console.log(parsed);
+      		localStorage.setItem('products', parsed);
+		},
 		setState(){
 			let cardWrapper = event.target.closest('.product__wrapper');
 			cardWrapper.classList.toggle('state_open');
+			
 		},
 		getImgUrl(pic) {
 			return require('../assets/vegetables/' + pic);
@@ -101,6 +146,7 @@ export default {
 		}
 		&__content{
 			max-height: 140px;
+			overflow: hidden;
 			padding: 10px;
 			width: 100%;
 			border-radius: 5px;

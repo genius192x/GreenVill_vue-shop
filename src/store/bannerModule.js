@@ -30,21 +30,30 @@ export const bannerModule = {
 				link: '#'
 			},
 			{
-				id:3,
+				id:4,
 				badge: 'Top deal!',
-				img: '2.png',
-				previewImg: '2.png',
+				img: '1.png',
+				previewImg: '1.png',
 				promoTitle: 'Fresh AVOCADO UP TO 15% OFF',
 				title: 'Avocado',
 				link: '#'
 			},
 			{
-				id:4,
+				id:5,
 				badge: 'Top deal!',
-				img: '3.png',
-				previewImg: '3.png',
+				img: '2.png',
+				previewImg: '2.png',
 				promoTitle: 'Fresh ORANGES UP TO 10% OFF',
 				title: 'Oranges',
+				link: '#'
+			},
+			{
+				id: 6,
+				badge: 'Top deal!',
+				img: '2.png',
+				previewImg: '2.png',
+				promoTitle: 'Fresh AVOCADO UP TO 15% OFF',
+				title: 'Avocado',
 				link: '#'
 			},
 		],
