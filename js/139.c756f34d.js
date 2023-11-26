@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkgreenvill"]=self["webpackChunkgreenvill"]||[]).push([[139],{5139:function(n,e,r){r.r(e),r.d(e,{default:function(){return s}});var u=r(3396);function i(n,e){return(0,u.wg)(),(0,u.iD)("h1",null,"This is an Shop page")}var l=r(89);const t={},a=(0,l.Z)(t,[["render",i]]);var s=a}}]);
-//# sourceMappingURL=139.c756f34d.js.map
