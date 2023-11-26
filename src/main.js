@@ -8,16 +8,13 @@ import 'vue-smooth-picker/dist/css/style.css'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-import store from './store'
-import { Quasar, LocalStorage } from 'quasar'
+import { Quasar, Notify } from 'quasar'
 import quasarUserOptions from './quasar-user-options'
+import { createPinia } from 'pinia'
 
-const vuetify = createVuetify({
-	components,
-	directives,
-})
 
-const app = createApp(App).use(Quasar, quasarUserOptions)
+const pinia = createPinia()
+const app = createApp(App)
 
 Mycomponents.forEach(component => {
 	app.component(component.name, component)
@@ -25,12 +22,12 @@ Mycomponents.forEach(component => {
 
 app
 .use(router)
-.use(store)
+.use(pinia)
 .use(SmoothPicker)
-.use(Quasar, {
-	plugins: {	
-		LocalStorage
+.use(Quasar, quasarUserOptions, {
+	plugins: {
+		Notify
 	}
-  })
+})
 .mount('#app')
 

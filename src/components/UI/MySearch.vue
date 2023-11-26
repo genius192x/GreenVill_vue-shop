@@ -1,51 +1,5 @@
 <template>
-	<q-form @submit="onSubmit" class="q-gutter-md">
-		<q-select
-			filled
-			v-model="model"
-			use-input
-			input-debounce="0"
-			label="Simple filter"
-			:options="options"
-			@filter="filterFn"
-			style="width: 250px"
-		>
-			<template v-slot:no-option>
-				<q-item>
-					<q-item-section class="text-grey">
-					No results
-					</q-item-section>
-				</q-item>
-			</template>
-		</q-select>
-		<div>
-			<q-btn label="Submit" type="submit" color="primary"/>
-		</div>
-	</q-form>
-	<q-card
-	v-if="submitted"
-	flat
-	bordered
-	class="q-mt-md"
-	:class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-2'"
-	>
-		<template v-if="submitEmpty">
-			<q-card-section>
-			Submitted form contains empty formData.
-			</q-card-section>
-		</template>
-		<template v-else>
-			<q-card-section>Submitted form contains the following formData (key = value):</q-card-section>
-			<q-separator />
-			<q-card-section class="row q-gutter-sm items-center">
-			<div
-				v-for="(item, index) in submitResult"
-				:key="index"
-				class="q-px-sm q-py-xs bg-grey-8 text-white rounded-borders text-center text-no-wrap"
-			>{{ item.name }} = {{ item.value }}</div>
-			</q-card-section>
-		</template>
-	</q-card>
+	<input type="text" style="border: 1px solid black;">
 </template>
 
 <script>

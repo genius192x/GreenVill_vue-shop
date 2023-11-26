@@ -1,7 +1,8 @@
+import { defineStore } from 'pinia'
 
-export const bannerModule = {
-    state: () => ({
-        banners:[
+export const useBannersStore = defineStore('bannersStore', {
+  state: () => ({
+    banners:[
 			{
 				id:1,
 				badge: 'Top deal!',
@@ -57,17 +58,11 @@ export const bannerModule = {
 				link: '#'
 			},
 		],
-    }),
-    getters: {
-		getProductById: (state) => (id) => {
+  }),
+
+  actions: {
+    getProductById: (state) => (id) => {
 			return state.banners.find(product => product.id === id);
 		}
-    },
-    mutations: {
-
-    },
-    actions: {
-
-    },
-    namespaced: true
-}
+  }
+})

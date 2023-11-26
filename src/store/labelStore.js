@@ -1,7 +1,8 @@
+import { defineStore } from 'pinia'
 
-export const labelModule = {
-    state: () => ({
-        labels:[
+export const useLabelStore = defineStore('lebelStore', {
+  state: () => ({
+    labels:[
 			{
 				id:1,
 				title: 'Meal',
@@ -39,17 +40,9 @@ export const labelModule = {
 				href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 			},
 		],
-    }),
-    getters: {
-		getProductById: (state) => (id) => {
-			return state.labels.find(label => label.id === id);
-		}
-    },
-    mutations: {
+  }),
 
-    },
-    actions: {
+  actions: {
 
-    },
-    namespaced: true
-}
+  }
+})

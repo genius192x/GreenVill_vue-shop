@@ -16,7 +16,7 @@
 </template>
 
 <script>
-
+import Notify from '@/components/Notify.vue'
 import Navbar from '@/components/Navbar'
 import MobileNav from '@/components/MobileNav.vue'
 import Header from './components/Header.vue';
@@ -24,7 +24,8 @@ export default {
 	components:{
 		Navbar,
 		MobileNav,
-		Header
+		Header,
+		Notify
 	},
 	mounted(){
 		var currentUrl = window.location.pathname;
@@ -39,7 +40,7 @@ export default {
 
 		box-sizing: border-box;
 		--bgColorMenu : #1d1d27;
-		--duration: .7s;    
+		--duration: .7s;
 
 	}
 
@@ -98,7 +99,7 @@ export default {
 		min-height: 100dvh;
 		@media (max-width: 786px){
 			margin-bottom: 60px;
-		}	
+		}
 	}
 	.nav{
 		z-index: 10;
@@ -119,7 +120,7 @@ export default {
 	}
 	nav {
 		padding: 30px;
-		
+
 	a {
 		font-weight: bold;
 		color: #2c3e50;

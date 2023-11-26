@@ -10,12 +10,12 @@
 				<span class="product__old-price">${{ product.oldPrice }}</span>
 			</div>
 				<!-- <q-btn color="purple" @click="showNotif" label="Show with caption" /> -->
-			<div class="product__picker" @click="showNotif">
+			<div class="product__picker">
 				<my-picker @some-event="test"></my-picker>
 			</div>
 		</div>
 		<!-- <p>currentValue = <strong>{{ currentValue === null ? '(null)' : currentValue }}</strong></p> -->
-		
+
 	</a>
 </template>
 
@@ -25,7 +25,7 @@ import { useQuasar } from 'quasar'
 // import { VueScrollPicker } from 'vue-scroll-picker'
 // import "vue-scroll-picker/lib/style.css"
 export default {
-	
+
 	components:{
 		MyPicker, useQuasar
 	},
@@ -41,14 +41,14 @@ export default {
 				})
 			}
 		}
-	},	
+	},
 	data(){
 		return{
 			products: [],
 			newProduct: null,
 		}
 	},
-	
+
 	props: {
 		product:{
 			type: Object,
@@ -56,13 +56,7 @@ export default {
 		}
 	},
 	mounted(){
-		if (localStorage.getItem('products')) {
-			try {
-				this.products = JSON.parse(localStorage.getItem('products'));
-			} catch(e) {
-				localStorage.removeItem('products');
-			}
-		}
+
 	},
 	methods:{
 		test(n){
@@ -85,13 +79,13 @@ export default {
 		setState(){
 			let cardWrapper = event.target.closest('.product__wrapper');
 			cardWrapper.classList.toggle('state_open');
-			
+
 		},
 		getImgUrl(pic) {
 			return require('../assets/vegetables/' + pic);
 		},
 	},
-	
+
 
 }
 </script>
@@ -121,6 +115,9 @@ export default {
 				.picker__wrapper{
 					position: relative;
 					top: -35px;
+				}
+				.product__picker{
+					// max-height: 70px;
 				}
 			}
 		}
@@ -179,11 +176,12 @@ export default {
 			right: 0;
 			border-radius: 5px 0px;
 			background-color: #59E39F;
-			
+
 		}
 		&__picker{
 			height: 100%;
 			width: 100%;
+			// max-height: 70px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -215,7 +213,7 @@ export default {
 			height: 1px;
 		}
 	}
-	
+
 	.vue-scroll-picker-layer-top {
 		box-sizing: border-box;
 		border-bottom: 1px solid #c8c7cc;

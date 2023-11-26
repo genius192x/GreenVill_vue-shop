@@ -1,10 +1,12 @@
-export const productModule = {
-    state: () => ({
-        products:[
+import { defineStore } from 'pinia'
+
+export const useProductsStore = defineStore('productsStore', {
+  state: () => ({
+    products:[
 			{
 				id:1,
 				badge: 'Top deal!',
-				price: 6.85,
+				price: 100000,
 				oldPrice: 7.00,
 				img: '1.png',
 				previewImg: '1.png',
@@ -282,17 +284,11 @@ export const productModule = {
 				link: '#'
 			},
 		],
-    }),
-    getters: {
-		getProductById: (state) => (id) => {
-			return state.products.find(product => product.id === id);
+  }),
+
+  actions: {
+    getProductById(id){
+			return this.products.find(product => product.id === id);
 		}
-    },
-    mutations: {
-
-    },
-    actions: {
-
-    },
-    namespaced: true
-}
+  }
+})

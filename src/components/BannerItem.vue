@@ -12,7 +12,7 @@
 				<img class="banner__image" :src="getImgUrl(banner.previewImg)" alt="img"/>
 			</div>
 		</div>
-		
+
 	</div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
 		}
 		&__title{
 			font-size: 22px;
-			font-weight: 600;	
+			font-weight: 600;
 		}
 		@media (min-width: 768px){
 			  font-size: 28px;

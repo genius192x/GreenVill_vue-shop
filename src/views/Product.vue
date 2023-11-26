@@ -1,5 +1,5 @@
 <template>
-	
+
 	<div class="product-detail__container">
 		<h1 class="product-detail__title">{{ product.title }}</h1>
 		<div class="product-detail__wrapper">
@@ -14,7 +14,7 @@
 					class="mySwiper2"
 				>
 					<swiper-slide class="main-swiper__silde" v-for="photo in product.photos"><img :src="getImgUrl(photo.img)" /></swiper-slide>
-					
+
 				</swiper>
 				<swiper
 					:modules="[Thumbs]"
@@ -36,11 +36,14 @@
 		</div>
 		<div v-if="product.description" class="product-detail__descriprion">{{ product.description }}</div>
 	</div>
-	
+
 </template>
 
 <script>
-import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+// import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+import { mapActions } from 'pinia';
+import { useProductsStore } from '../store/productsStore'
+
 import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
 // import 'swiper/css';
@@ -68,26 +71,38 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 				setThumbsSwiper,
 			};
 		},
+		data() {
+			return {
+				product: {}
+			}
+		},
 		methods:{
+			...mapActions(useProductsStore, {
+				getProduct: 'getProductById',
+			}),
 			getImgUrl(pic) {
 				return require('../assets/vegetables/' + pic);
 			},
+			product() {
+				return this.getProduct(this.productId);
+			},
+
 		},
 		mounted(){
-			console.log(this.product);
+			console.log(this.productId);
+			console.log(this.getProduct(this.productId));
+			this.getProduct(this.productId)
+			this.product = this.getProduct(this.productId)
 		},
 		computed: {
-			...mapGetters({
-				getProductById: 'products/getProductById',
-			}),
+			// ...mapGetters({
+			// 	getProductById: 'products/getProductById',
+			// }),
 			productId() {
 				return +this.$route.params.id;
 			},
-			product() {
-				return this.getProductById(this.productId);
-			}
 		}
-		
+
 	}
 </script>
 
@@ -96,7 +111,7 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 		overflow: hidden;
 		border-radius: 5px;
 	}
-	
+
 	.slide{
 		&__thumb{
 			height: 100px;
@@ -133,7 +148,7 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 		&__container{
 			padding: 0px 10px;
 
-			
+
 		}
 		&__wrapper{
 			@media (min-width: 950px){
@@ -156,13 +171,13 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 			border-radius: 10px;
 			@media (max-width: 768px){
 				margin-top: 20px;
-				  
+
 			}
 		}
 		&__characteristic{
 			line-height: 1.5;
 			text-align: left;
-			
+
 		}
 		&__descriprion{
 			line-height: 1.5;
