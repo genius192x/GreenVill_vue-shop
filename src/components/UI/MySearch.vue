@@ -1,74 +1,78 @@
 <template>
-	<input type="text" style="border: 1px solid black;">
+	<q-select
+		transition-show="jump-up"
+		transition-hide="jump-down"
+		filled
+		clearable
+		v-model="model"
+		use-input
+		icon="arrow"
+		behavior="menu"
+		dropdown-icon="search"
+		color="cyan-8"
+		bg-color="transparent"
+		input-class="form-control__input"
+		input-debounce="0"
+		:options="filterOptions"
+		@filter="filterFn"
+		style="max-width: 500px; width: 100%"
+	>
+		<template v-slot:option="scope">
+			<q-item v-bind="scope.itemProps" class="tippy-panel__item">
+				<q-item-section color="white">
+					<q-item-label class="tippy-panel__title" @click="$router.push(`/shop/${scope.opt.id}`)">{{
+						scope.opt.title
+					}}</q-item-label>
+				</q-item-section>
+			</q-item>
+		</template>
+	</q-select>
 </template>
 
 <script>
 import { ref } from 'vue'
 import { useQuasar } from 'quasar'
-const stringOptions = [
-  'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
-].reduce((acc, opt) => {
-  for (let i = 1; i <= 2; i++) {
-    acc.push(opt + ' ' + i)
-  }
-  return acc
-}, [])
+import { useProductsStore} from '@/store/productsStore'
 	export default {
 		components: {
 			useQuasar,
 		},
-		setup () {
-			const submitted = ref(false)
-			const submitEmpty = ref(false)
-			const submitResult = ref([])
-			const options = ref(stringOptions)
-
+		setup() {
+			const filterStore = useProductsStore()
+			const filterOptions = ref(filterStore.products)
 			return {
 				model: ref(null),
-				options,
-
-				filterFn (val, update) {
-					if (val === '') {
-					update(() => {
-						options.value = stringOptions
-
-						// here you have access to "ref" which
-						// is the Vue reference of the QSelect
-					})
-					return
+				filterOptions,
+				filterStore,
+				createValue(value, done) {
+					if (value.length > 0) {
+						if (!stringOptions.includes(value)) {
+							stringOptions.push(value)
+						}
+						done(value, 'toggle')
 					}
-
-					update(() => {
-						const needle = val.toLowerCase()
-						options.value = stringOptions.filter(v => v.toLowerCase().indexOf(needle) > -1)
-					})
 				},
-				accepted: ref([]),
 
-				submitted,
-				submitEmpty,
-				submitResult,
-
-				onSubmit (evt) {
-					const formData = new FormData(evt.target)
-					const data = []
-
-					for (const [ name, value ] of formData.entries()) {
-						data.push({
-							name,
-							value
-						})
-					}
-
-					submitted.value = true
-					submitResult.value = data
-					submitEmpty.value = data.length === 0
+				filterFn(value, update) {
+					update(() => {
+						if (value === '') {
+							filterOptions.value = filterStore.products
+						} else {
+							const needle = value.toLowerCase()
+							filterOptions.value = filterStore.products.filter(
+								(v) => v.value.toLowerCase().indexOf(needle) > -1
+							)
+						}
+					})
 				}
 			}
 		},
 	}
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss" >
+.q-field{
+	border-bottom: 1px solid teal;
+	transition: all 0.3s ease 0s;
+}
 </style>

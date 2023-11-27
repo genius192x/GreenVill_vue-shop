@@ -6,7 +6,7 @@ export const useProductsStore = defineStore('productsStore', {
 			{
 				id:1,
 				badge: 'Top deal!',
-				price: 100000,
+				price: 6.78,
 				oldPrice: 7.00,
 				img: '1.png',
 				previewImg: '1.png',
@@ -57,6 +57,7 @@ export const useProductsStore = defineStore('productsStore', {
 					},
 				],
 				title: 'Bananas',
+				value: 'Bananas',
 				link: '#'
 			},
 			{
@@ -113,6 +114,7 @@ export const useProductsStore = defineStore('productsStore', {
 					},
 				],
 				title: 'Avocado',
+				value: 'Avocado',
 				link: '#'
 			},
 			{
@@ -169,6 +171,8 @@ export const useProductsStore = defineStore('productsStore', {
 					},
 				],
 				title: 'Oranges',
+				value: 'Oranges',
+
 				link: '#'
 			},
 			{
@@ -225,6 +229,7 @@ export const useProductsStore = defineStore('productsStore', {
 					},
 				],
 				title: 'Avocado',
+				value: 'Avocado',
 				link: '#'
 			},
 			{
@@ -281,6 +286,7 @@ export const useProductsStore = defineStore('productsStore', {
 					},
 				],
 				title: 'Oranges',
+				value: 'Oranges',
 				link: '#'
 			},
 		],

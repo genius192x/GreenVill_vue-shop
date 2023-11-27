@@ -26,7 +26,7 @@
 		return {
 			addNotif(position) {
 				$q.notify({
-					group: false,
+					group: 'add-group',
 					position,
 					message: 'Товар добавлен в корзину' ,
 					color: 'secondary'
@@ -34,7 +34,7 @@
 			},
 			delNotif(position) {
 				$q.notify({
-					group: false,
+					group: 'del-group',
 					position,
 					message: 'Товар удален из корзины' ,
 					color: 'secondary'
@@ -54,7 +54,7 @@
 		showPicker(){
 
 			if(window.innerWidth < 768){
-				this.addNotif('top')
+				this.addNotif('top-right')
 			}else{
 				this.addNotif('bottom')
 			}
@@ -65,7 +65,7 @@
 		decreaseValue(currentValue){
 			if (this.options.indexOf(currentValue) == 0){
 				if(window.innerWidth < 768){
-					this.delNotif('top')
+					this.delNotif('top-right')
 				}else{
 					this.delNotif('bottom')
 				}

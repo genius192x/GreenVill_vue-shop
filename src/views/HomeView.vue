@@ -28,7 +28,6 @@ export default {
 	},
 
 	computed: {
-
 		...mapState(useBannersStore, { bannerList: 'banners'}),
 		...mapState(useLabelStore, { labelList: 'labels'}),
 		...mapState(useProductsStore, { productsList: 'products'}),

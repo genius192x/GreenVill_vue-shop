@@ -101,6 +101,9 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 			productId() {
 				return +this.$route.params.id;
 			},
+		},
+		watch:{
+			//TODO сделай просмотр id и при его смене переинициализируй продукт
 		}
 
 	}
