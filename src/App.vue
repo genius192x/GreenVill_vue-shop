@@ -20,6 +20,10 @@ import Notify from '@/components/Notify.vue'
 import Navbar from '@/components/Navbar'
 import MobileNav from '@/components/MobileNav.vue'
 import Header from './components/Header.vue';
+import { useInitStore } from './store/initStore';
+import { user } from "@/lib//stores/user.js";
+import {useCartsStore} from '@/store/cartStore.js'
+import { mapState, mapActions } from 'pinia'
 export default {
 	components:{
 		Navbar,
@@ -27,10 +31,15 @@ export default {
 		Header,
 		Notify
 	},
+	methods:{
+		...mapActions(useCartsStore, ['updateCart'])
+	},
 	mounted(){
+		user.init()
+		this.updateCart()
 		var currentUrl = window.location.pathname;
 		console.log(`Current URL => ${currentUrl}`);
-    }
+  }
 }
 
 </script>

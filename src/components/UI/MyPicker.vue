@@ -1,5 +1,5 @@
 <template>
-	<div @click.stop="$emit('someEvent',currentValue)" class="picker">
+	<div @click.stop="$emit('someEvent', currentValue)" class="picker">
 		<button @click="showPicker" class="picker__button picker__button_role_show" >add to cart</button>
 		<div class="picker__wrapper">
 			<button @click="decreaseValue(currentValue)" class="picker__button picker__button_border_reverse">-</button>
@@ -15,10 +15,22 @@
 <script>
   import { VueScrollPicker } from 'vue-scroll-picker'
   import { useQuasar } from 'quasar'
+	import { mapActions } from 'pinia'
+	import { useCartsStore } from '@/store/cartStore'
   export default {
 	components: {
 	  VueScrollPicker,
 	  useQuasar // export VueScrollPicker is component
+	},
+	props:{
+		curValue:{
+			type: String,
+			default: '100g'
+		},
+		id:{
+			type: Number,
+			required: true
+		}
 	},
 	setup () {
 		const $q = useQuasar()
@@ -46,11 +58,12 @@
 		return{
 			isVisible: false,
 			options: ["100g", "200g", "300g","400g","500g","600g","700g","800g","900g","1,0kg","1,1kg","1,2kg","1,3kg","1,4kg","1,5kg","1,6kg","1,7kg","1,8kg","1,9kg","2,0kg",],
-			currentValue: null,
+			currentValue: this.curValue,
 
 		}
 	},
 	methods:{
+		...mapActions(useCartsStore, ['deleteElement']),
 		showPicker(){
 
 			if(window.innerWidth < 768){
@@ -63,6 +76,8 @@
 
 		},
 		decreaseValue(currentValue){
+
+
 			if (this.options.indexOf(currentValue) == 0){
 				if(window.innerWidth < 768){
 					this.delNotif('top-right')
@@ -71,13 +86,14 @@
 				}
 				let cardWrapper = event.target.closest('.product__wrapper');
 				cardWrapper.classList.toggle('state_open');
+				currentValue= null
+				this.$emit('deleteEvent', currentValue)
 			}
 			else{
 				let curValue = this.options.indexOf(currentValue);
 				this.currentValue = this.options[curValue - 1]
 				// console.log(this.currentValue);
 			}
-
 		},
 		increaseValue(currentValue){
 			 let curValue = this.options.indexOf(currentValue);
@@ -86,9 +102,7 @@
 		}
 	},
 	mounted(){
-		// curPickerItems.forEach(item=>{
-		// 	console.log(item);
-		// })
+		// console.log(this.id);
 	}
   }
 </script>

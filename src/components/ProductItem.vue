@@ -11,7 +11,7 @@
 			</div>
 				<!-- <q-btn color="purple" @click="showNotif" label="Show with caption" /> -->
 			<div class="product__picker">
-				<my-picker @some-event="test"></my-picker>
+				<my-picker @some-event="addToCart" @delete-event="deleteElem" :curValue="getCurValue()" :id="this.product.id"></my-picker>
 			</div>
 		</div>
 		<!-- <p>currentValue = <strong>{{ currentValue === null ? '(null)' : currentValue }}</strong></p> -->
@@ -22,6 +22,9 @@
 <script>
 import MyPicker from '@/components/UI/MyPicker.vue'
 import { useQuasar } from 'quasar'
+import {useCartsStore} from '@/store/cartStore.js'
+import { mapState, mapActions } from 'pinia'
+import { ref } from 'vue'
 // import { VueScrollPicker } from 'vue-scroll-picker'
 // import "vue-scroll-picker/lib/style.css"
 export default {
@@ -44,8 +47,8 @@ export default {
 	},
 	data(){
 		return{
-			products: [],
 			newProduct: null,
+			isDel: ref(true),
 		}
 	},
 
@@ -56,25 +59,50 @@ export default {
 		}
 	},
 	mounted(){
+		if(this.getCurValue()){
+			const picker = this.$el;
+			picker.classList.toggle('state_open')
 
+		}
+	},
+	computed:{
+		...mapState(useCartsStore, ['products'])
+	},
+	watch:{
+		products:{
+			handler(val) {
+			},
+			deep: true
+		}
 	},
 	methods:{
-		test(n){
-			this.newProduct = {
-				title: this.product.title,
-				price: this.product.price,
-				// multiplier: Number(n/1000),
-				weight: n,
-			},
-			this.products.unshift(this.newProduct);
-			console.log(this.newProduct);
-			this.saveProduct();
-			// console.log(n);
+		getCurValue(){
+			if(this.getProductById(this.product.id)){
+				return this.getProductById(this.product.id).weight
+			}
 		},
-		saveProduct(){
-			const parsed = JSON.stringify(this.products);
-			console.log(parsed);
-      		localStorage.setItem('products', parsed);
+		addToCart(n){
+			if(this.isDel !==null){
+				if(this.getProductById(this.product.id)){
+					this.getProductById(this.product.id).weight= n
+				}else{
+					this.newProduct = {
+						id: this.product.id,
+						title: this.product.title,
+						price: this.product.price,
+						weight: n,
+					},
+					this.addProduct(this.newProduct)
+				}
+				localStorage.setItem('products',JSON.stringify(this.products));
+			}else{
+				this.isDel = true
+			}
+		},
+		deleteElem(n){
+			this.isDel = n
+			this.deleteElement(this.product.id)
+
 		},
 		setState(){
 			let cardWrapper = event.target.closest('.product__wrapper');
@@ -84,6 +112,7 @@ export default {
 		getImgUrl(pic) {
 			return require('../assets/vegetables/' + pic);
 		},
+		...mapActions(useCartsStore, ['getProductById', 'addProduct', 'deleteElement', 'updateCart'])
 	},
 
 
@@ -114,7 +143,7 @@ export default {
 				}
 				.picker__wrapper{
 					position: relative;
-					top: -35px;
+					top: -25px;
 				}
 				.product__picker{
 					// max-height: 70px;

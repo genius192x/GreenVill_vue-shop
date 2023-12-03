@@ -1,5 +1,22 @@
 import { defineStore } from 'pinia'
+import { Client, Databases } from 'appwrite';
 
+const client = new Client();
+
+const databases = new Databases(client);
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+    .setProject('65679c67792fb8acf4ed') // Your project ID
+;
+
+const promise = databases.listDocuments('656a469eabbd8d3d53b0', '656a46be953e9d2c10a3');
+
+promise.then(function (response) {
+    // console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
 export const useProductsStore = defineStore('productsStore', {
   state: () => ({
     products:[
