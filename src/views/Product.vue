@@ -83,9 +83,9 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 			getImgUrl(pic) {
 				return require('../assets/vegetables/' + pic);
 			},
-			product() {
-				return this.getProduct(this.productId);
-			},
+			// product() {
+			// 	return this.getProduct(this.productId);
+			// },
 
 		},
 		mounted(){

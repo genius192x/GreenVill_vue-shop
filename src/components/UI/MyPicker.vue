@@ -3,7 +3,7 @@
 		<button @click="showPicker" class="picker__button picker__button_role_show" >add to cart</button>
 		<div class="picker__wrapper">
 			<button @click="decreaseValue(currentValue)" class="picker__button picker__button_border_reverse">-</button>
-			<VueScrollPicker @click="" dragSensitivity:0.5 touchSensitivity:0.5 :options="options" v-model="currentValue"/>
+			<VueScrollPicker @drag.stop dragSensitivity:0.5 touchSensitivity:0.5 :options="options" v-model="currentValue"/>
 			<button @click="increaseValue(currentValue)" class="picker__button">+</button>
 		</div>
 	</div>
@@ -32,6 +32,7 @@
 			required: true
 		}
 	},
+
 	setup () {
 		const $q = useQuasar()
 
@@ -61,6 +62,13 @@
 			currentValue: this.curValue,
 
 		}
+	},
+	watch:{
+		currentValue: {
+			handler(val) {
+				this.$emit('someEvent', val)
+			},
+		},
 	},
 	methods:{
 		...mapActions(useCartsStore, ['deleteElement']),
