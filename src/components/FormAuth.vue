@@ -87,10 +87,11 @@ export default {
 				this.isLogining = false
 			}
 		},
-		register(){ async () => {
+		async register(){
+			this.isLogining = true
 			await account.create(ID.unique(), this.emailField, this.password, this.nameField);
-			login(this.emailField, this.password);
-		}},
+			this.login(this.emailField, this.password);
+		},
 		setLoginInfo(){
 			this.name = this.loggedInUser.name,
 			this.email = this.loggedInUser.email,
