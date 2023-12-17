@@ -4,7 +4,7 @@
 			<div class="header__search">
 				<MySearch/>
 			</div>
-			<div class="header__avatar">
+			<div class="header__avatar" v-if="!route.includes('user')">
 				<img src="../assets/avatars/1.png" alt="">
 			</div>
 		</div>
@@ -22,15 +22,22 @@ import MySearch from '@/components/UI/MySearch'
 			MyInput,
 			MySearch
 		},
-		
+
 		data(){
 			return{
+				route: window.location.hash,
+			}
+		},
+		watch:{
+			$route (to, from){
+				this.route = window.location.hash.split("#/")[1];
+				// console.log(this.route);
 			}
 		},
 		methods:{
 		},
 		mounted(){
-
+			// console.log(this.$route.name);
 		}
 	}
 </script>
@@ -47,7 +54,7 @@ import MySearch from '@/components/UI/MySearch'
 				max-width: 100%;
 			}
 		}
-		
+
 		&__wrapper{
 			align-items: center;
 			display: flex;
@@ -97,7 +104,7 @@ import MySearch from '@/components/UI/MySearch'
 				width: 0;
 				padding: 5px 0px;
 				transition: all 0.5s ease 0s;
-				
+
 			}
 			&.active{
 				justify-content: flex-end;

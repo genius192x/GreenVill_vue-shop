@@ -5,7 +5,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-	meta: { transition: 'slide-left' },
+		meta: { transition: 'slide-left' },
     component: HomeView
   },
   {

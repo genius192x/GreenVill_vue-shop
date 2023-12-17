@@ -5,6 +5,8 @@ import { Account } from "appwrite";
 export const useInitStore = defineStore('initStore', {
   state: () => ({
 		isLogin: false,
+		email: '',
+		name: '',
 		current: null,
   }),
 
@@ -17,5 +19,10 @@ export const useInitStore = defineStore('initStore', {
 				this.current = null;
 			}
 		},
+		clearProfile(){
+			this.isLogin = false,
+			this.email = '',
+			this.name = ''
+		}
   }
 })

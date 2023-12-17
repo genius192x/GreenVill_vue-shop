@@ -37,7 +37,6 @@ export default {
 
 		return {
 			showNotif() {
-				console.log('wqwd');
 				$q.notify({
 					message: 'Товар добавлен в корзину' ,
 					color: 'secondary'

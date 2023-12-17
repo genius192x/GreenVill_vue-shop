@@ -80,7 +80,8 @@ import { mapState } from 'pinia'
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		min-width: 200px;
+		max-width: 200px;
+		width: 100%;
 		height: auto;
 		margin: 20px;
 		display: none;

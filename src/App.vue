@@ -21,10 +21,14 @@ import Navbar from '@/components/Navbar'
 import MobileNav from '@/components/MobileNav.vue'
 import Header from './components/Header.vue';
 import { useInitStore } from './store/initStore';
-import { user } from "@/lib//stores/user.js";
 import {useCartsStore} from '@/store/cartStore.js'
 import { mapState, mapActions } from 'pinia'
 export default {
+	data() {
+		return {
+
+		}
+	},
 	components:{
 		Navbar,
 		MobileNav,
@@ -34,11 +38,11 @@ export default {
 	methods:{
 		...mapActions(useCartsStore, ['updateCart'])
 	},
+	watch:{
+
+	},
 	mounted(){
-		user.init()
 		this.updateCart()
-		var currentUrl = window.location.pathname;
-		console.log(`Current URL => ${currentUrl}`);
   }
 }
 

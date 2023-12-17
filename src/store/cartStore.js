@@ -10,6 +10,12 @@ export const useCartsStore = defineStore('cartStore', {
     getProductById(id){
 			return this.products.find(product => product.id === id);
 		},
+		clearCart(){
+			localStorage.removeItem('products')
+			this.products=[],
+			console.log('awdaw');
+
+		},
 		addProduct(product){
 			this.products.push(product),
 			console.log(this.products);

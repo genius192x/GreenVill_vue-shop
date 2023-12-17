@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container">
 		<section class="banners">
 			<BannerList :banners="bannerList"/>
 		</section>
@@ -42,7 +42,7 @@ export default {
 }
 </script>
 <style lang="scss">
-	.home{
+	.container{
 		padding: 0px 10px;
 	}
 	section{
