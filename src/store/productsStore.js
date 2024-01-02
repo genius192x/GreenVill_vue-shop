@@ -12,11 +12,11 @@ client
 
 const promise = databases.listDocuments('656a469eabbd8d3d53b0', '656a46be953e9d2c10a3');
 
-promise.then(function (response) {
-    // console.log(response); // Success
-}, function (error) {
-    console.log(error); // Failure
-});
+// promise.then(function (response) {
+//     // console.log(response); // Success
+// }, function (error) {
+//     console.log(error); // Failure
+// });
 export const useProductsStore = defineStore('productsStore', {
   state: () => ({
     products:[

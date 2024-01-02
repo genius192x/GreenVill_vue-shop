@@ -26,11 +26,11 @@ export default {
 <style lang="scss">
 	.products{
 		&__list{
-			display: grid; 
-			grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); 
-			// grid-template-rows: 1fr 1fr; 
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+			// grid-template-rows: 1fr 1fr;
 			gap: 10px;
-			
+
 		}
 	}
 </style>

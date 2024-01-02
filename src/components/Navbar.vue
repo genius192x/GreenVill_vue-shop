@@ -152,6 +152,7 @@ import { mapState } from 'pinia'
 	justify-content: center;
 	align-items: center;
 	background: red;
+	z-index: 2;
 	color: #fff;
 	font-size: 12px;
 

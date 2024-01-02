@@ -89,7 +89,9 @@ export default {
 						id: this.product.id,
 						title: this.product.title,
 						price: this.product.price,
+						image: this.product.previewImg,
 						weight: n,
+						oldPrice: this.product.oldPrice
 					},
 					this.addProduct(this.newProduct)
 				}
