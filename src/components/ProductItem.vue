@@ -1,7 +1,11 @@
 <template>
-	<a @click="$router.push(`/shop/${product.id}`)" class="product__wrapper">
+	<a @click="$router.push(`/shop/${product.id}`)" class="product__wrapper" :class="{ product__wrapper_role_cart: role === 'cart' }">
 		<div class="product__illustration">
 			<img class="product__image" :src="getImgUrl(product.previewImg)" alt="">
+		</div>
+		<div class="product__description" v-if="role === 'cart'">
+			<div class="product__text">{{ product.description }}</div>
+
 		</div>
 		<div class="product__content">
 			<span class="product__title">{{ product.title }}</span>
@@ -9,13 +13,10 @@
 				<span class="product__cur-price"> ${{ product.price }}</span>
 				<span class="product__old-price">${{ product.oldPrice }}</span>
 			</div>
-				<!-- <q-btn color="purple" @click="showNotif" label="Show with caption" /> -->
 			<div class="product__picker">
 				<my-picker @some-event="addToCart" @delete-event="deleteElem" :curValue="getCurValue()" :id="this.product.id"></my-picker>
 			</div>
 		</div>
-		<!-- <p>currentValue = <strong>{{ currentValue === null ? '(null)' : currentValue }}</strong></p> -->
-
 	</a>
 </template>
 
@@ -54,8 +55,10 @@ export default {
 	props: {
 		product:{
 			type: Object,
-			required: true,
-		}
+		},
+		role: {
+			type: String,
+		},
 	},
 	mounted(){
 		if(this.getCurValue()){
@@ -89,9 +92,10 @@ export default {
 						id: this.product.id,
 						title: this.product.title,
 						price: this.product.price,
-						image: this.product.previewImg,
+						previewImg: this.product.previewImg,
 						weight: n,
-						oldPrice: this.product.oldPrice
+						oldPrice: this.product.oldPrice,
+						description: this.product.description
 					},
 					this.addProduct(this.newProduct)
 				}
@@ -124,7 +128,6 @@ export default {
 <style lang="scss">
 	.product{
 		&__wrapper{
-			display: block;
 			text-decoration: none;
 			background: #FFFBE2;
 			width: 100%;
@@ -134,9 +137,36 @@ export default {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			// justify-content: space-between;
 			border-radius: 10px;
 			transition: all 0.3s ease 0s;
+
+			&_role{
+				&_cart{
+					flex-direction: row;
+					height: fit-content;
+					align-items: flex-start;
+					gap: 10px;
+					@media (max-width: 450px){
+						flex-direction: column;
+					}
+					&__content{
+						max-height: 146px;
+					}
+					&.state_open{
+						@media (min-width: 768px){
+							.product__content{
+								flex: 0 0 35%;
+							}
+						}
+						@media (max-width: 768px){
+							.product__content{
+								flex: 0 0 35%;
+							}
+						}
+					}
+				}
+			}
+
 			&.state_open{
 				.picker__button_role_show{
 					position: relative;
@@ -151,9 +181,37 @@ export default {
 				}
 			}
 		}
+		&__text{
+			flex: 1 1  35%;
+			overflow: hidden;
+      text-overflow: ellipsis;
+      display: -moz-box;
+      -moz-box-orient: vertical;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      line-clamp: 6;
+      box-orient: vertical;
+			// padding: 10px;
+			border-radius: 5px;
+			@media (max-width: 450px){
+				-webkit-line-clamp: 4;
+			}
+		}
+		&__description{
+			flex: 1 1  35%;
+			padding: 10px;
+			min-height: 146px;
+			background: rgba(255, 255, 255, 0.70);
+			@media (max-width: 450px){
+				order: 2;
+				min-height: auto;
+			}
+		}
 		&__illustration{
 			max-width: 124px;
 			height: 100px;
+			align-self: center;
 			margin-bottom: 5px;
 		}
 		&__image{

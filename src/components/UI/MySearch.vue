@@ -6,7 +6,7 @@
 		clearable
 		v-model="model"
 		use-input
-		icon="arrow"
+		emit-value
 		behavior="menu"
 		dropdown-icon="search"
 		color="cyan-8"

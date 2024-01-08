@@ -5,7 +5,6 @@ export const useCartsStore = defineStore('cartStore', {
   state: () => ({
     products:[],
   }),
-
   actions: {
     getProductById(id){
 			return this.products.find(product => product.id === id);

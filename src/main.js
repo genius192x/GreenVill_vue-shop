@@ -13,18 +13,18 @@ import { createPinia } from 'pinia'
 const pinia = createPinia()
 const app = createApp(App)
 
-Mycomponents.forEach(component => {
-	app.component(component.name, component)
-})
+// Mycomponents.forEach(component => {
+// 	app.component(component.name, component)
+// })
 
 app
-.use(router)
-.use(pinia)
-.use(SmoothPicker)
-.use(Quasar, quasarUserOptions, {
-	plugins: {
-		Notify
-	}
-})
-.mount('#app')
+	.use(router)
+	.use(pinia)
+	.use(SmoothPicker)
+	.use(Quasar, quasarUserOptions, {
+		plugins: {
+			Notify
+		}
+	})
+	.mount('#app')
 

@@ -1,25 +1,28 @@
 <template>
-	<div class="cart__wrapper">
-		<div class="cart__list">
-			<div class="cart__item" >
-				<product-item v-for="product in products" :product="product"/>
-				<!-- <CartItem :item="cartItem"/> -->
-			</div>
+	<div class="container">
+		<div class="cart__wrapper">
+			<section class="products">
+				<ProductList :products="products" :role="'cart'"/>
+			</section>
+			<q-btn color="primary" label="clear cart" @click="clear" />
 		</div>
 	</div>
-	<q-btn color="primary" label="clear cart" @click="clear" />
 </template>
 
 <script>
 import ProductItem from '@/components/ProductItem.vue'
 import {useCartsStore} from '@/store/cartStore.js'
+import { useProductsStore } from '../store/productsStore'
 import { mapState, mapActions } from 'pinia'
 import CartItem	from '@/components/CartItem.vue'
+import MyButton from '@/components/UI/MyButton.vue'
+import ProductList from '@/components/ProductList.vue'
 	export default {
 		components:{
-			CartItem,
-			ProductItem
-		},
+    CartItem,
+    ProductItem,
+		ProductList,
+},
 		mounted(){
 		},
 		methods:{
@@ -29,7 +32,8 @@ import CartItem	from '@/components/CartItem.vue'
 			}
 		},
 		computed: {
-			...mapState(useCartsStore, ['products'])
+			...mapState(useCartsStore, ['products']),
+			...mapState(useProductsStore, { productsList: 'products'}),
 		},
 	}
 </script>
